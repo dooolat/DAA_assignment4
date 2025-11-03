@@ -1,6 +1,7 @@
 package graph.dagsp;
 
 import java.util.*;
+import graph.metrics.BasicMetrics;
 
 public class DAGShortestPath {
 
@@ -23,6 +24,9 @@ public class DAGShortestPath {
     }
 
     public int[] shortestPaths(int source) {
+        BasicMetrics metrics = new BasicMetrics();
+        metrics.startTimer(); // 🔹 запуск измерения времени
+
         int[] dist = new int[n];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[source] = 0;
@@ -32,12 +36,16 @@ public class DAGShortestPath {
         for (int u : topoOrder) {
             if (dist[u] != Integer.MAX_VALUE) {
                 for (Edge e : adj.get(u)) {
+                    metrics.increment("relaxations"); // 🔹 считаем операции
                     if (dist[e.to] > dist[u] + e.weight) {
                         dist[e.to] = dist[u] + e.weight;
                     }
                 }
             }
         }
+
+        metrics.stopTimer();  // 🔹 останавливаем таймер
+        metrics.print();      // 🔹 выводим метрики
         return dist;
     }
 
@@ -75,7 +83,6 @@ public class DAGShortestPath {
         }
     }
 
-    // 🔽 вот сюда вставляешь пример main
     public static void main(String[] args) {
         DAGShortestPath g = new DAGShortestPath(6);
         g.addEdge(0, 1, 5);
