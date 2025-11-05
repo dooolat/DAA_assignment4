@@ -32,13 +32,28 @@ Uses **Dynamic Programming** along topological order.
 
 ---
 
-## Results and Analysis
+## Dataset Overview
 
-| Graph Type   | Nodes | Edges | SCCs | Time (ms) | Metrics Summary               |
-|---------------|--------|--------|------|------------|--------------------------------|
-| small_1.json  | 8      | 12     | 2    | 0.3        | 18 DFS, 15 relaxations         |
-| medium_2.json | 14     | 33     | 4    | 1.1        | 42 DFS, 28 queue operations    |
-| large_3.json  | 45     | 160    | 6    | 4.7        | 130 DFS, 120 relaxations       |
+The project includes **9 generated datasets** stored in the `/data/` directory, divided into three categories:
+
+| Category | File | Nodes | Edges | Type |
+|-----------|------|--------|--------|------|
+| Small | graph_1.json | 10 | 54 | cyclic |
+| Small | graph_2.json | 9 | 30 | cyclic |
+| Small | graph_3.json | 8 | 40 | cyclic |
+| Medium | graph_1.json | 13 | 75 | cyclic |
+| Medium | graph_2.json | 18 | 113 | DAG |
+| Medium | graph_3.json | 10 | 61 | cyclic |
+| Large | graph_1.json | 21 | 283 | DAG |
+| Large | graph_2.json | 21 | 158 | cyclic |
+| Large | graph_3.json | 23 | 348 | DAG |
+
+### File Format
+All datasets are saved in **JSON** format, containing:
+- `n`: number of vertices
+- `edges`: list of objects `{u, v, w}` representing directed weighted edges
+- `type`: either `"cyclic"` or `"DAG"`
+- `weight_model`: `"edge"`
 
 ### Observations
 - SCC detection time grows almost linearly with edge density.
