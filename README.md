@@ -1,5 +1,3 @@
---- 
-
 ### 1. Strongly Connected Components (SCC)
 Implemented using **Tarjan’s Algorithm**, which runs in **O(V + E)** time.
 - Detects cycles and compresses them into single components.
@@ -36,11 +34,11 @@ Uses **Dynamic Programming** along topological order.
 
 ## Results and Analysis
 
-| Graph Type | Nodes | Edges | SCC Count | Time (ms) | Key Metrics |
-|-------------|--------|--------|------------|------------|--------------|
-| small_1.json | 8 | 12 | 2 | 0.3 | 18 DFS calls, 15 relaxations |
-| medium_2.json | 14 | 33 | 4 | 1.1 | 42 DFS calls, 28 queue ops |
-| large_3.json | 45 | 160 | 6 | 4.7 | 130 DFS, 120 relaxations |
+| Graph Type   | Nodes | Edges | SCCs | Time (ms) | Metrics Summary               |
+|---------------|--------|--------|------|------------|--------------------------------|
+| small_1.json  | 8      | 12     | 2    | 0.3        | 18 DFS, 15 relaxations         |
+| medium_2.json | 14     | 33     | 4    | 1.1        | 42 DFS, 28 queue operations    |
+| large_3.json  | 45     | 160    | 6    | 4.7        | 130 DFS, 120 relaxations       |
 
 ### Observations
 - SCC detection time grows almost linearly with edge density.
@@ -69,12 +67,12 @@ Uses **Dynamic Programming** along topological order.
 ## Conclusion
 
 This project successfully integrates three foundational graph algorithms — **Strongly Connected Components (SCC)**, **Topological Sorting**, and **Shortest Path in a Directed Acyclic Graph (DAG-SP)** — into a unified analytical framework.  
-Through this implementation, the project bridges theoretical graph concepts with practical scheduling problems in **Smart City** and **Smart Campus** environments.
+Through its implementation, the project bridges theoretical graph concepts with practical scheduling problems in **Smart City** and **Smart Campus** environments.
 
 ### Key Achievements
 - **Detection and compression of cyclic dependencies** using Tarjan’s SCC algorithm enabled the transformation of arbitrary directed graphs into manageable DAGs, essential for planning and analytics tasks.
-- **Topological sorting** allowed establishing a strict execution order among independent service or maintenance tasks, ensuring conflict-free scheduling.
-- **Shortest and longest path analysis** revealed critical sequences (bottlenecks) in the workflow — a vital step in identifying the most time-sensitive operations in complex systems.
+- **Topological sorting** established a strict, dependency-consistent execution order among independent tasks.
+- **Shortest and longest path analysis** revealed critical sequences (bottlenecks) — key for identifying time-sensitive operations in complex systems.
 
 ### Integration and Automation
 - The framework includes **automatic dataset generation**, enabling stress testing on multiple graph sizes and densities.
@@ -97,6 +95,6 @@ The combination of algorithmic rigor, dataset generation, and performance instru
 
 ### Final Thoughts
 By combining SCC, Topological Sorting, and DAG Shortest Path analysis, this project delivers not only a robust algorithmic toolkit but also a methodological foundation for data-driven decision-making in networked environments.  
-It illustrates that even complex dependency systems can be decomposed, ordered, and optimized with elegant, efficient graph algorithms.
+It illustrates that even highly interconnected dependency systems can be decomposed, ordered, and optimized through algorithmic reasoning.
 
 ---
